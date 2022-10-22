@@ -3,6 +3,7 @@
   "description": "An Telegram Bot By Safone to Play Nonstop Radio/Music/YouTube Live in Telegram Voice Chats",
   "logo": "https://telegra.ph/file/a3755d9cb09f1361e3ac7.jpg",
   "stack": "container",
+  "repository" : "https://github.com/sakhaavvaavaj93/RadioPlayerV3.git",
   "keywords": [
     "telegram",
     "bot",
@@ -51,7 +52,7 @@
     },
     "MAXIMUM_DURATION": {
       "description": "Maximum Duration of a song to be played by using /play command",
-      "value": "15",
+      "value": "60",
       "required": false
     },
     "STREAM_URL": {
@@ -66,11 +67,11 @@
     },
     "HEROKU_API_KEY": {
       "description": "Your Heroku api token. Get it from https://dashboard.heroku.com/account",
-      "required": true
+      "required": false
     },
     "HEROKU_APP_NAME": {
       "description": "Name of your Heroku app, given in the first blank on this page if deploying to heroku.",
-      "required": true
+      "required": false
     }
   },
   "formation": {
