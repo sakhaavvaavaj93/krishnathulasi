@@ -61,14 +61,11 @@ class Config:
     ADMINS.append(1316963576)
     API_ID = int(os.environ.get("API_ID", ""))
     API_HASH = os.environ.get("API_HASH", "")
-    CHAT_ID = int(os.environ.get("CHAT_ID", ""))
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
     SESSION = os.environ.get("SESSION_STRING", "")
 
     # Optional Variables
     STREAM_URL=finalurl
-    LOG_GROUP=os.environ.get("LOG_GROUP", "")
-    LOG_GROUP = int(LOG_GROUP) if LOG_GROUP else None
     ADMIN_ONLY=os.environ.get("ADMIN_ONLY", "False")
     REPLY_MESSAGE=os.environ.get("REPLY_MESSAGE", None)
     REPLY_MESSAGE = REPLY_MESSAGE or None
