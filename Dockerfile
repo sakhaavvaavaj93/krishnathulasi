@@ -15,8 +15,8 @@ COPY requirements.txt /requirements.txt
 # Installing Requirements
 RUN cd /
 RUN pip3 install -U -r requirements.txt
-RUN mkdir /RadioPlayerV3
-WORKDIR /RadioPlayerV3
+RUN mkdir /krishnathulasi-
+WORKDIR /krishnathulasi-
 COPY start.sh /start.sh
 
 # Running Radio Player Bot
