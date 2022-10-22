@@ -33,8 +33,7 @@ from pyrogram.types import Message
 from pyrogram.errors import UserAlreadyParticipant
 
 ADMINS=Config.ADMINS
-CHAT_ID=Config.CHAT_ID
-LOG_GROUP=Config.LOG_GROUP
+
 
 bot = Client(
     "RadioPlayer",
@@ -49,7 +48,7 @@ async def main():
     async with bot:
         await mp.start_radio()
         try:
-            await USER.join_chat("AsmSafone")
+            await USER.join_chat("DC_Kurukshethra")
         except UserAlreadyParticipant:
             pass
         except Exception as e:
@@ -65,7 +64,7 @@ def stop_and_restart():
 
 bot.run(main())
 bot.start()
-print("\n\nRadio Player Bot Started, Join @AsmSafone!")
+print("\n\nDC Player Bot Started, Join @DC_Kurukshethra!")
 bot.send(
     SetBotCommands(
         scope=BotCommandScopeDefault(),
@@ -168,7 +167,7 @@ async def restart(_, message: Message):
         Config.HEROKU_APP.restart()
     else:
         await k.edit("🔄 **Restarting, Please Wait...**")
-        process = FFMPEG_PROCESSES.get(CHAT_ID)
+        process = FFMPEG_PROCESSES.get
         if process:
             try:
                 process.send_signal(SIGINT)
@@ -177,16 +176,16 @@ async def restart(_, message: Message):
             except Exception as e:
                 print(e)
                 pass
-            FFMPEG_PROCESSES[CHAT_ID] = ""
+            FFMPEG_PROCESSES = ""
         Thread(
             target=stop_and_restart()
             ).start()
     try:
-        await k.edit("✅ **Restarted Successfully! \nJoin @AsmSafone For Update!**")
+        await k.edit("✅ **Restarted Successfully! \nJoin @DC_LOGS For Update!**")
         await k.reply_to_message.delete()
     except:
         pass
 
 idle()
-print("\n\nRadio Player Bot Stopped, Join @AsmSafone!")
+print("\n\nDC Player Bot Stopped, Join @DC_Kurukshethra!")
 bot.stop()
