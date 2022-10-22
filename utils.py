@@ -208,7 +208,7 @@ class MusicPlayer(object):
             )
 
 
-        FFMPEG_PROCESSES[CHAT_ID] = process
+        FFMPEG_PROCESSES = process
         if RADIO_TITLE:
             await self.edit_title()
         await sleep(2)
@@ -236,7 +236,7 @@ class MusicPlayer(object):
                 RADIO.add(0)
             except:
                 pass
-        process = FFMPEG_PROCESSES.get(CHAT_ID)
+        process = FFMPEG_PROCESSES.get
         if process:
             try:
                 process.send_signal(SIGINT)
