@@ -1,20 +1,3 @@
-"""
-RadioPlayerV3, Telegram Voice Chat Bot
-Copyright (c) 2021  Asm Safone <https://github.com/AsmSafone>
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>
-"""
 
 import asyncio
 from config import Config
@@ -31,12 +14,9 @@ buttons = [
                 InlineKeyboardButton("❔ HOW TO USE ME ❔", callback_data="help"),
             ],
             [
-                InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
-                InlineKeyboardButton("SUPPORT", url="https://t.me/AsmSupport"),
-            ],
-            [
-                InlineKeyboardButton("🤖 MAKE YOUR OWN BOT 🤖", url="https://heroku.com/deploy?template=https://github.com/AsmSafone/RadioPlayerV3"),
-            ]
+                InlineKeyboardButton("CHANNEL", url="https://t.me/DC_LOGS"),
+                InlineKeyboardButton("SUPPORT", url="https://t.me/DC_Kurukshethra"),
+            ]       
          ]
 
 
@@ -47,9 +27,9 @@ async def search(client, query):
         answers.append(
             InlineQueryResultPhoto(
                 title="Deploy Your Own Radio Player",
-                thumb_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
-                photo_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
-                caption=f"{REPLY_MESSAGE}\n\n<b>© Powered By : \n@AsmSafone | @AsmSupport 👑</b>",
+                thumb_url="http://tele.gra.ph/file/bdf2ee8348572a65cc311.jpg",
+                photo_url="http://telegra.ph/file/bdf2ee8348572a65cc311.jpg",
+                caption=f"{REPLY_MESSAGE}\n\n<b>© Powered By : \n@DC_LOGS | @KRISHNA_THULSI 👑</b>",
                 reply_markup=InlineKeyboardMarkup(buttons)
                 )
             )
